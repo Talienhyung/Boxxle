@@ -34,6 +34,9 @@ const draw = () => {
     requestAnimationFrame(() => {
         if(game.noMoreBaseToFill(grid)){
             game.nextLevel()
+            if(game.endLevel){
+                window.location.href = "win.html"
+            }
             grid = game.gridOrigin
             player.resetPos(grid)
         }
@@ -68,11 +71,8 @@ function managementKeys(event) {
 }
 
 const resetLevel = () => {
-    console.log(grid)
-    grid = game.getLevel()[game.actualLevel]
+    grid = game.deepClone(game.cloneGrid)
     player.resetPos(grid)
-    console.log(game.getLevel()[game.actualLevel])
-    console.log(grid)
 }
 // Ajout d'un écouteur d'événements pour les touches du clavier
 document.addEventListener('keydown', managementKeys);

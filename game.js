@@ -5,12 +5,15 @@ export class Game {
     actualLevel = 0
     listBase = []
 
+    cloneGrid = []
+
     endLevel = false
     errorBase = false
     
 
     constructor(){
         this.gridOrigin = Levels[this.actualLevel]
+        this.cloneGrid = this.deepClone(Levels[this.actualLevel])
         this.listBase = this.findBase()
         if(this.listBase.length===0){
             this.nextLevel()
@@ -119,12 +122,13 @@ export class Game {
         }
         this.gridOrigin = Levels[this.actualLevel]
         this.listBase = this.findBase()
+        this.cloneGrid = this.deepClone(Levels[this.actualLevel])
         if(this.listBase.length===0){
             this.nextLevel()
         }
     }
-
-    getLevel(){
-        return Levels
-    }
+    
+    deepClone(array) {
+        return JSON.parse(JSON.stringify(array));
+      }
 }
