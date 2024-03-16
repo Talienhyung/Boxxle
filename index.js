@@ -7,11 +7,10 @@ let grid = game.gridOrigin
 let player = new Player(grid);
 let settings = new Settings(0);
 
-
-
 const container = document.getElementById('gameboard');
+const resetButton = document.getElementById('reset-btn');
 
-const draw = (grid) => {
+const draw = () => {
     // Clear previous cells
     container.innerHTML = '';
     for (let i = 0; i < grid.length; i++) {
@@ -37,20 +36,14 @@ const draw = (grid) => {
             game.nextLevel()
             grid = game.gridOrigin
             player.resetPos(grid)
-            console.log(player.positionX)
-            console.log(player.positionY)
-            console.log(grid)
         }
-        draw(grid, gridContainer)
+        draw()
     })
 }
 
 
-
-const gridContainer = document.getElementById('gameboard');
-
 // Draw initial grid
-draw(grid, gridContainer);
+draw();
 
 
 // Fonction principale pour gérer les touches pressées
@@ -74,6 +67,14 @@ function managementKeys(event) {
     }
 }
 
+const resetLevel = () => {
+    console.log(grid)
+    grid = game.getLevel()[game.actualLevel]
+    player.resetPos(grid)
+    console.log(game.getLevel()[game.actualLevel])
+    console.log(grid)
+}
 // Ajout d'un écouteur d'événements pour les touches du clavier
 document.addEventListener('keydown', managementKeys);
+resetButton.addEventListener('click', resetLevel);
 

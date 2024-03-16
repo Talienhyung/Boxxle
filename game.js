@@ -13,7 +13,7 @@ export class Game {
         this.gridOrigin = Levels[this.actualLevel]
         this.listBase = this.findBase()
         if(this.listBase.length===0){
-            this.errorBase = true
+            this.nextLevel()
         }
     }
     
@@ -120,7 +120,11 @@ export class Game {
         this.gridOrigin = Levels[this.actualLevel]
         this.listBase = this.findBase()
         if(this.listBase.length===0){
-            this.errorBase = true
+            this.nextLevel()
         }
+    }
+
+    getLevel(){
+        return Levels
     }
 }
