@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup de Configuration de Touches</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<button id="openPopup">Ouvrir la popup</button>
+
+<div id="configPopup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <h2>Configuration des touches</h2>
+        <label for="key1">Touche 1 :</label>
+        <input type="text" id="key1" readonly>
+        <button onclick="setKey(1)">Changer</button><br>
+        <label for="key2">Touche 2 :</label>
+        <input type="text" id="key2" readonly>
+        <button onclick="setKey(2)">Changer</button><br>
+        <label for="key3">Touche 3 :</label>
+        <input type="text" id="key3" readonly>
+        <button onclick="setKey(3)">Changer</button><br>
+        <label for="key4">Touche 4 :</label>
+        <input type="text" id="key4" readonly>
+        <button onclick="setKey(4)">Changer</button><br>
+    </div>
+</div>
+
+<script>
+    const openButton = document.getElementById('openPopup');
+    const popup = document.getElementById('configPopup');
+    const closeButton = document.querySelector('.close');
+    const keyInputs = document.querySelectorAll('input[type="text"]');
+
+    openButton.addEventListener('click', function() {
+        popup.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target == popup) {
+            popup.style.display = 'none';
+        }
+    });
+
+    function setKey(keyNumber) {
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            const input = document.getElementById('key' + keyNumber);
+            input.value = key;
+        }, { once: true });
+    }
+</script>
+
+</body>
+</html>
