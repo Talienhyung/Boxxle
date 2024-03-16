@@ -1,11 +1,12 @@
 import { Game } from "./game.js";
 import { Player } from "./player.js";
+import { Settings } from "./settings.js";
 
 let game = new Game(0);
-let player = new Player(0);
-
-
 let grid = game.gridOrigin
+let player = new Player(grid);
+let settings = new Settings(0);
+
 
 
 const container = document.getElementById('gameboard');
@@ -13,7 +14,6 @@ const container = document.getElementById('gameboard');
 const draw = (grid) => {
     // Clear previous cells
     container.innerHTML = '';
-  
     for (let i = 0; i < grid.length; i++) {
       for (let j = 0; j < grid[i].length; j++) {
         const cell = document.createElement('div');
@@ -32,8 +32,16 @@ const draw = (grid) => {
     }
 
     // Call draw recursively using requestAnimationFrame
-    requestAnimationFrame(() => draw(grid, gridContainer))
+    requestAnimationFrame(() => {
+        if(game.noMoreBaseToFill(grid)){
+            game.nextLevel()
+            grid = game.gridOrigin
+            player.resetPos(grid)
+        }
+        draw(grid, gridContainer)
+    })
 }
+
 
 
 const gridContainer = document.getElementById('gameboard');
@@ -43,20 +51,20 @@ draw(grid, gridContainer);
 
 
 // Fonction principale pour gérer les touches pressées
-function gestionTouches(event) {
+function managementKeys(event) {
     const touche = event.key.toLowerCase();
     switch (touche) {
-        case 'z':
-            grid = player.deplacerHaut(grid, game);
+        case settings.up:
+            grid = player.goUp(grid, game);
             break;
-        case 's':
-            grid = player.deplacerBas(grid, game);
+        case settings.down:
+            grid = player.goDown(grid, game);
             break;
-        case 'q':
-            grid = player.deplacerGauche(grid, game);
+        case settings.left:
+            grid = player.goLeft(grid, game);
             break;
-        case 'd':
-            grid = player.deplacerDroite(grid, game);
+        case settings.right:
+            grid = player.goRight(grid, game);
             break;
         default:
             break;
@@ -64,5 +72,5 @@ function gestionTouches(event) {
 }
 
 // Ajout d'un écouteur d'événements pour les touches du clavier
-document.addEventListener('keydown', gestionTouches);
+document.addEventListener('keydown', managementKeys);
 

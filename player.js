@@ -2,8 +2,14 @@ export class Player {
     positionX = 1;
     positionY = 1;
 
+    deplacement = 0
+
+    constructor(grid){
+        this.resetPos(grid)
+    }
     
-    deplacerHaut(grid, game) {
+    goUp(grid, game) {
+        this.deplacement++
         if (game.detectSomethings(this.positionX, this.positionY, grid, "top", 0)) {
         grid[this.positionY][this.positionX] = 0;
         this.positionY--;
@@ -14,10 +20,11 @@ export class Player {
             grid[this.positionY][this.positionX] = 3;
             grid[this.positionY-1][this.positionX] = 2;
         }
-        return grid
+        return game.baseOnBox(grid)
     }
 
-    deplacerBas(grid, game) {
+    goDown(grid, game) {
+        this.deplacement++
         if (game.detectSomethings(this.positionX, this.positionY, grid, "bottom", 0)) {
             grid[this.positionY][this.positionX] = 0;
             this.positionY++;
@@ -28,10 +35,11 @@ export class Player {
             grid[this.positionY][this.positionX] = 3;
             grid[this.positionY+1][this.positionX] = 2;
         }
-        return grid
+        return game.baseOnBox(grid)
     }
 
-    deplacerGauche(grid, game) {
+    goLeft(grid, game) {
+        this.deplacement++
         if (game.detectSomethings(this.positionX, this.positionY, grid, "left", 0)) {
             grid[this.positionY][this.positionX] = 0;
             this.positionX--;
@@ -42,10 +50,11 @@ export class Player {
             grid[this.positionY][this.positionX] = 3;
             grid[this.positionY][this.positionX-1] = 2;
         }
-        return grid
+        return game.baseOnBox(grid)
     }
 
-    deplacerDroite(grid, game) {
+    goRight(grid, game) {
+        this.deplacement++
         if (game.detectSomethings(this.positionX, this.positionY, grid, "right", 0)) {
             grid[this.positionY][this.positionX] = 0;
             this.positionX++;
@@ -56,6 +65,18 @@ export class Player {
             grid[this.positionY][this.positionX] = 3;
             grid[this.positionY][this.positionX+1] = 2;
         }
-        return grid
+        return game.baseOnBox(grid)
+    }
+
+    resetPos(grid){
+        for (let i = 0; i < grid.length; i++) {
+            for (let j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] === 3) {
+                    this.positionX = j
+                    this.positionY = i
+                    return
+                }
+            }
+        }
     }
 }

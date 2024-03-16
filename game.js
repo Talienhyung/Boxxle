@@ -4,11 +4,17 @@ export class Game {
     
     actualLevel = 0
     listBase = []
+
+    endLevel = false
+    errorBase = false
     
 
     constructor(){
         this.gridOrigin = Levels[this.actualLevel]
-        this.listBase = this.findBase
+        this.listBase = this.findBase()
+        if(this.listBase.length===0){
+            this.errorBase = true
+        }
     }
     
     detectSomethings (posX, posY, grid, direction, type){
@@ -79,5 +85,42 @@ export class Game {
             }
         }
         return listBase;
+    }
+
+    boxOnBase(posX, posY){
+        return this.listBase.includes([posY, posX])
+    }
+
+    baseOnBox(grid){
+        for (let i = 0; i < this.listBase.length; i++) {
+            let base=this.listBase[i]
+            if(grid[base[0]][base[1]] === 0){
+                grid[base[0]][base[1]] = 4
+            }
+        }
+        return grid
+    }
+
+    noMoreBaseToFill(grid){
+        for (let i = 0; i < this.listBase.length; i++) {
+            let base=this.listBase[i]
+            if(grid[base[0]][base[1]] != 2){
+                return false
+            }
+        }
+        return true
+    }
+
+    nextLevel(){
+        this.actualLevel++
+        if (this.actualLevel === Levels.length){
+            this.endLevel = true
+            return
+        }
+        this.gridOrigin = Levels[this.actualLevel]
+        this.listBase = this.findBase()
+        if(this.listBase.length===0){
+            this.errorBase = true
+        }
     }
 }
