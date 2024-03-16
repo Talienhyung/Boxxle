@@ -37,6 +37,9 @@ const draw = (grid) => {
             game.nextLevel()
             grid = game.gridOrigin
             player.resetPos(grid)
+            console.log(player.positionX)
+            console.log(player.positionY)
+            console.log(grid)
         }
         draw(grid, gridContainer)
     })
