@@ -21,6 +21,7 @@ export class Game {
         }
     }
     
+    // detect if an object {type} is at the direct {direction} from {posX} {posY} in the {grid}
     detectSomethings (posX, posY, grid, direction, type){
         const numCols = grid[0].length;
         const numRows = grid.length;
@@ -64,6 +65,7 @@ export class Game {
         return false
     }
 
+    // Detect if there is the space for pushing the box
     detectBoxPushable(posX, posY, grid, direction) {
         if (this.detectSomethings(posX, posY, grid, direction, 2)){
             switch (direction){
@@ -79,6 +81,7 @@ export class Game {
         }
     }
 
+    // find all the base and return it in a array
     findBase(){
         let listBase = [];
         for (let i = 0; i < this.gridOrigin.length; i++) {
@@ -91,6 +94,7 @@ export class Game {
         return listBase;
     }
 
+    // return true if there is a base at {posX} {posY}
     boxOnBase(posX, posY){
         for (let i = 0; i < this.listBase.length; i++) {
             let base=this.listBase[i]
@@ -101,6 +105,7 @@ export class Game {
         return false
     }
 
+    // return the correct grid if some base are missing
     baseOnBox(grid){
         for (let i = 0; i < this.listBase.length; i++) {
             let base=this.listBase[i]
@@ -111,6 +116,7 @@ export class Game {
         return grid
     }
 
+    // return true if all the base are fill
     noMoreBaseToFill(grid){
         for (let i = 0; i < this.listBase.length; i++) {
             let base=this.listBase[i]
@@ -121,6 +127,7 @@ export class Game {
         return true
     }
     
+    // create a deepclone
     deepClone(array) {
         return JSON.parse(JSON.stringify(array));
     }
@@ -131,6 +138,7 @@ export class Game {
         audio.play();
     }
 
+    // display the win message
     win(){
         let winContainer = document.querySelector("#winContainer"); // To show Username
 
@@ -148,6 +156,7 @@ export class Game {
         }, 5000);
    }
    
+   // pass to the next level
     nextLevel(){
         this.actualLevel++
         if (this.actualLevel === Levels.length){

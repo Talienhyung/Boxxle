@@ -1,5 +1,3 @@
-  //fetching Audios
-
 // fetching Audios
 let Music = new Audio("../sound/Playermove.mp3"); // For fetching BackgroundMusic
 let playerMoveMusic = new Audio("../sound/Playermove.mp3"); // For fetching BackgroundMusic
@@ -16,9 +14,6 @@ const playerMoveaudio = () => {
 
 
 export class Player {
-  
-
-
     positionX = 1;
     positionY = 1;
 
@@ -27,7 +22,9 @@ export class Player {
     constructor(grid){
         this.resetPos(grid)
     }
-    
+
+
+    // The following four functions are directional functions to move the player forward or push a box.
     goUp(grid, game) {
         backgroundaudio();
         if (game.detectSomethings(this.positionX, this.positionY, grid, "top", 0)) {
@@ -107,6 +104,7 @@ export class Player {
         return game.baseOnBox(grid)
     }
 
+    // Reset the player's position 
     resetPos(grid){
         this.movement = 0
         for (let i = 0; i < grid.length; i++) {

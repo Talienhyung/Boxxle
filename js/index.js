@@ -106,8 +106,7 @@ const draw = () => {
 // Draw initial grid
 draw();
 
-
-// Fonction principale pour gérer les touches pressées
+// Main function for managing pressed keys
 function managementKeys(event) {
     const touche = event.key.toLowerCase();
     switch (touche) {
@@ -134,7 +133,8 @@ const resetLevel = () => {
     grid = game.deepClone(game.cloneGrid)
     player.resetPos(grid)
 }
-// Ajout d'un écouteur d'événements pour les touches du clavier
+
+// Add an event listener for keyboard keys
 document.addEventListener('keydown', managementKeys);
 resetButton.addEventListener('click', resetLevel);
 
