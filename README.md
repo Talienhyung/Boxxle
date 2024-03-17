@@ -17,9 +17,9 @@ Utilisez les touches directionnelles pour déplacer le joueur. Le joueur peut po
 - Des sons immersifs pour améliorer l'expérience de jeu
 - Un chronomètre pour suivre le temps passé à compléter chaque niveau
 - Menu de démarage pour rentrer son pseudo
-- Affichage d'une page win si le niveau est reussi
+- Affichage d'un PopUp "win" si le niveau est reussi
 - Personnage, caisse et mur personalisé pour plus de fun :D
-- 
+- Bouton reset pour recommencer le niveau
 
 
 
