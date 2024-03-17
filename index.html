@@ -46,24 +46,42 @@
             <h2>Key configuration</h2>
             <label for="key1">Up :</label>
             <input type="text" id="key1" placeholder="z" readonly>
-            <button onclick="setKey(1)">Changer</button><br>
+            <button id="keyInput1" >Changer</button><br>
             <label for="key2">Down :</label>
             <input type="text" id="key2" placeholder="s" readonly>
-            <button onclick="setKey(2)">Changer</button><br>
+            <button id="keyInput2" >Changer</button><br>
             <label for="key3">Left :</label>
             <input type="text" id="key3" placeholder="q" readonly>
-            <button onclick="setKey(3)">Changer</button><br>
+            <button id="keyInput3" >Changer</button><br>
             <label for="key4">Right :</label>
             <input type="text" id="key4" placeholder="d" readonly>
-            <button onclick="setKey(4)">Changer</button><br>
+            <button id="keyInput4" >Changer</button><br>
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        import { ChangeSettings } from './js/index.js'
         const openButton = document.getElementById('openPopup');
         const popup = document.getElementById('configPopup');
         const closeButton = document.querySelector('.close');
         const keyInputs = document.querySelectorAll('input[type="text"]');
+        const btn1 = document.getElementById('keyInput1');
+        const btn2 = document.getElementById('keyInput2');
+        const btn3 = document.getElementById('keyInput3');
+        const btn4 = document.getElementById('keyInput4');
+
+        btn1.addEventListener('click', function() {
+           setKey(1)
+        });
+        btn2.addEventListener('click', function() {
+           setKey(2)
+        });
+        btn3.addEventListener('click', function() {
+           setKey(3)
+        });
+        btn4.addEventListener('click', function() {
+           setKey(4)
+        });
 
         openButton.addEventListener('click', function() {
             popup.style.display = 'block';
@@ -84,6 +102,7 @@
                 const key = event.key;
                 const input = document.getElementById('key' + keyNumber);
                 input.value = key;
+                ChangeSettings(keyNumber, key)
             }, { once: true });
         }
     </script>

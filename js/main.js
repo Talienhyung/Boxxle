@@ -1,4 +1,4 @@
-let Music = new Audio("Background.mp3"); 
+let Music = new Audio("../sound/Playermove.mp3"); 
 
         const backgroundaudio = () => {
  Music.play();

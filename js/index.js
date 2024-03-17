@@ -25,6 +25,24 @@ saveBtn.addEventListener("click" , () => {
 
 })
 
+export function  ChangeSettings(key, keyEvent) {
+  switch (key) {
+    case 1:
+        settings.up =keyEvent
+        break;
+    case 2:
+        settings.down=keyEvent
+        break;
+    case 3:
+        settings.left=keyEvent
+        break;
+    case 4:
+        settings.right=keyEvent
+        break;
+    default:
+        break;
+  }
+}
 
 let game = new Game(0);
 let grid = game.gridOrigin
