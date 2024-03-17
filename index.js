@@ -100,7 +100,6 @@ function managementKeys(event) {
 
 const resetLevel = () => {
     grid = game.deepClone(game.cloneGrid)
-    console.log("pomme")
     player.resetPos(grid)
 }
 // Ajout d'un écouteur d'événements pour les touches du clavier
