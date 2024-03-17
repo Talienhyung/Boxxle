@@ -1,25 +1,23 @@
 # Boxxle
 
-Boxxle est un jeu de puzzle passionnant. Le but du jeu est de pousser des boîtes à leur place désignée dans un "labyrinthe".
+Boxxle is an exciting puzzle game. The aim of the game is to push boxes to their designated places in a "maze".
 
-## Comment jouer
+## How to play
 
-Utilisez les touches directionnelles pour déplacer le joueur. Le joueur peut pousser une boîte, mais ne peut pas tirer. Le niveau est terminé lorsque toutes les boîtes sont sur leur place désignée.
+Use the arrow keys to move the player. The player can push a box, but cannot shoot. The level is complete when all the boxes are in their designated places.
 
 ## Installation
 
-1. Clonez ce dépôt sur votre machine locale.
-2. Ouvrez le fichier `index.html` avec l'extention live serveur dans votre navigateur pour commencer à jouer.
+1. Clone this repository on your local machine.
+2. Open the `index.html` file with the live server extension in your browser to start playing.
 
-## Caractéristiques
+## Features
 
-- Plusieurs niveaux de difficulté
-- Des sons immersifs pour améliorer l'expérience de jeu
-- Un chronomètre pour suivre le temps passé à compléter chaque niveau
-- Menu de démarage pour rentrer son pseudo
-- Affichage d'un PopUp "win" si le niveau est reussi
-- Personnage, caisse et mur personalisé pour plus de fun :D
-- Bouton reset pour recommencer le niveau
-
-
+- Several difficulty levels
+- Immersive sounds to enhance the gaming experience
+- Settings to change different character controls
+- Start menu to enter your nickname
+- A "win" PopUp is displayed if the level is successfully completed
+- Personalised character, crate and wall for added fun :D
+- Reset button to restart the level
 
