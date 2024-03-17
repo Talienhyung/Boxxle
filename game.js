@@ -9,6 +9,7 @@ export class Game {
 
     endLevel = false
     errorBase = false
+    ok=false
     
 
     constructor(){
@@ -91,7 +92,13 @@ export class Game {
     }
 
     boxOnBase(posX, posY){
-        return this.listBase.includes([posY, posX])
+        for (let i = 0; i < this.listBase.length; i++) {
+            let base=this.listBase[i]
+            if(base[0] === posY && base[1] === posX){
+                return true
+            }
+        }
+        return false
     }
 
     baseOnBox(grid){

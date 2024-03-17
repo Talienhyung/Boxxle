@@ -9,13 +9,15 @@ export class Player {
     }
     
     goUp(grid, game) {
-        this.deplacement++
         if (game.detectSomethings(this.positionX, this.positionY, grid, "top", 0)) {
         grid[this.positionY][this.positionX] = 0;
         this.positionY--;
+        this.deplacement++
         grid[this.positionY][this.positionX] = 3;
         } else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "top")){
+            game.playAudio("sound/Open_00.mp3")
             grid[this.positionY][this.positionX] = 0;
+            this.deplacement++
             this.positionY--;
             grid[this.positionY][this.positionX] = 3;
             grid[this.positionY-1][this.positionX] = 2;
@@ -24,12 +26,14 @@ export class Player {
     }
 
     goDown(grid, game) {
-        this.deplacement++
         if (game.detectSomethings(this.positionX, this.positionY, grid, "bottom", 0)) {
+            this.deplacement++
             grid[this.positionY][this.positionX] = 0;
             this.positionY++;
             grid[this.positionY][this.positionX] = 3;
         }else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "bottom")){
+            this.deplacement++
+            game.playAudio("sound/Open_00.mp3")
             grid[this.positionY][this.positionX] = 0;
             this.positionY++;
             grid[this.positionY][this.positionX] = 3;
@@ -39,12 +43,14 @@ export class Player {
     }
 
     goLeft(grid, game) {
-        this.deplacement++
         if (game.detectSomethings(this.positionX, this.positionY, grid, "left", 0)) {
+            this.deplacement++
             grid[this.positionY][this.positionX] = 0;
             this.positionX--;
             grid[this.positionY][this.positionX] = 3;
         }else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "left")){
+            this.deplacement++
+            game.playAudio("sound/Open_01.mp3")
             grid[this.positionY][this.positionX] = 0;
             this.positionX--;
             grid[this.positionY][this.positionX] = 3;
@@ -54,13 +60,15 @@ export class Player {
     }
 
     goRight(grid, game) {
-        this.deplacement++
         if (game.detectSomethings(this.positionX, this.positionY, grid, "right", 0)) {
+            this.deplacement++
             grid[this.positionY][this.positionX] = 0;
             this.positionX++;
             grid[this.positionY][this.positionX] = 3;
         }else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "right")){
+            game.playAudio("sound/Open_01.mp3")
             grid[this.positionY][this.positionX] = 0;
+            this.deplacement++
             this.positionX++;
             grid[this.positionY][this.positionX] = 3;
             grid[this.positionY][this.positionX+1] = 2;
@@ -69,6 +77,7 @@ export class Player {
     }
 
     resetPos(grid){
+        this.deplacement = 0
         for (let i = 0; i < grid.length; i++) {
             for (let j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] === 3) {

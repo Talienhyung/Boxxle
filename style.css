@@ -28,6 +28,10 @@ background-color: blue;
 background-color: brown;
 }
 
+.onBase {
+    background-color: lightcoral;
+}
+
 .target {
 background-color: green;
 }

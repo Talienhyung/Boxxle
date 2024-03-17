@@ -21,6 +21,9 @@ const draw = () => {
           cell.classList.add('wall');
         } else if (grid[i][j] === 2) {
           cell.classList.add('box');
+          if(game.boxOnBase(j, i)){
+            cell.classList.add('onBase')
+          }
         } else if (grid[i][j] === 3) {
           cell.classList.add('player');
         } else if (grid[i][j] === 4) {
@@ -37,6 +40,7 @@ const draw = () => {
             if(game.endLevel){
                 window.location.href = "win.html"
             }
+            game.playAudio("sound/Jingle_Win_00.mp3")
             grid = game.gridOrigin
             player.resetPos(grid)
         }
