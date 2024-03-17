@@ -1,6 +1,7 @@
 import { Game } from "./game.js";
 import { Player } from "./player.js";
 import { Settings } from "./settings.js";
+import { RestartTimer } from "./timer.js";
 
 let userName = document.querySelector("#userInput"); // For fetching username
 let showUserName = document.querySelector("#showUsername"); // To show Username
@@ -43,6 +44,7 @@ export function  ChangeSettings(key, keyEvent) {
   }
 }
 
+let hadRestart =false
 let copi = 0
 let game = new Game(0);
 let grid = game.gridOrigin
@@ -76,6 +78,9 @@ const draw = () => {
         } else if (grid[i][j] === 3) {
           if(player.movement===0){
             cell.classList.add('notMouving');
+            if(!hadRestart){
+              RestartTimer()
+            }
           } else if(miror){
             cell.classList.add('back');
           }
@@ -97,6 +102,7 @@ const draw = () => {
             game.playAudio("sound/Jingle_Win_00.mp3")
             grid = game.gridOrigin
             player.resetPos(grid)
+            hadRestart = false
         }
         draw()
     })
@@ -132,6 +138,7 @@ function managementKeys(event) {
 const resetLevel = () => {
     grid = game.deepClone(game.cloneGrid)
     player.resetPos(grid)
+    hadRestart = true
 }
 
 // Add an event listener for keyboard keys
