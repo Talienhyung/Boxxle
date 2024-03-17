@@ -134,7 +134,8 @@ border: 1px black;
 }
 
 .player {
-background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiImHjo6VUlipEswp6v3g0JWaQFr4zeRXo-ugj4oZFHM6AcKrnf1D1jPWxHcYvaEkCbWU&usqp=CAU");
+    background: url(https://media.tenor.com/e8aElio9JQAAAAAi/mario-walking.gif);
+/* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiImHjo6VUlipEswp6v3g0JWaQFr4zeRXo-ugj4oZFHM6AcKrnf1D1jPWxHcYvaEkCbWU&usqp=CAU"); */
 background-position: center center;
 background-repeat: no-repeat;
 background-size: 3vw;
@@ -151,7 +152,7 @@ background-color: grey;
 }
     
 .box {
-    background: url("https://pixy.org/src/46/thumbs350/468404.jpg");
+    background: url("https://media.tenor.com/zFUVDcVwcqYAAAAi/star-cup-icon.gif");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -164,6 +165,14 @@ background-color: grey;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 50% 50%;
+}
+
+.onBase {
+    background: url("https://media.tenor.com/GK7rNPhguUQAAAAi/mario-star.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-size: 3vw;
 }
 
 #reset-btn{
