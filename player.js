@@ -2,7 +2,7 @@
 
 // fetching Audios
 let Music = new Audio("Background.mp3"); // For fetching BackgroundMusic
-let playerMoveMusic = new Audio("playermove.mp3"); // For fetching BackgroundMusic
+let playerMoveMusic = new Audio("Playermove.mp3"); // For fetching BackgroundMusic
 
 
 const backgroundaudio = () => {

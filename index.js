@@ -1,6 +1,7 @@
 import { Game } from "./game.js";
 import { Player } from "./player.js";
 import { Settings } from "./settings.js";
+
 let userName = document.querySelector("#userInput"); // For fetching username
 let showUserName = document.querySelector("#showUsername"); // To show Username
 let saveBtn = document.querySelector("#save"); // For fetching save button
