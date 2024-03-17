@@ -315,3 +315,25 @@ background-color: grey;
     text-decoration: none;
     cursor: pointer;
 }
+
+#winLevel{
+    width: 600px;
+    background-color: grey;
+    border : 5px solid #ff7426 ;
+    border-radius: 50px;
+    background-color: #541a0f ;
+    color: white;
+    outline: none;
+    font-family: Eina01,sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0;
+    overflow: visible;
+    padding: 50px 26px;
+    margin: 20px;
+    text-align: center;
+    position: center;
+    top: 40%;
+    transform: translateX(60%);
+
+}

@@ -18,8 +18,8 @@ saveBtn.addEventListener("click" , () => {
   
   }else{
     showUserName.innerText = userName.value;
-  para.style.display = "block";
-  user.style.display = "none";
+    para.style.display = "block";
+    user.style.display = "none";
   }
   
 
@@ -62,7 +62,7 @@ const draw = () => {
         if(game.noMoreBaseToFill(grid)){
             game.nextLevel()
             if(game.endLevel){
-                window.location.href = "win.html"
+                window.location.href = "./page/win.html"
             }
             game.playAudio("sound/Jingle_Win_00.mp3")
             grid = game.gridOrigin
