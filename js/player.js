@@ -22,7 +22,7 @@ export class Player {
     positionX = 1;
     positionY = 1;
 
-    deplacement = 0
+    movement = 0
 
     constructor(grid){
         this.resetPos(grid)
@@ -34,13 +34,13 @@ export class Player {
             playerMoveaudio();
             grid[this.positionY][this.positionX] = 0;
             this.positionY--;
-            this.deplacement++
+            this.movement++
             grid[this.positionY][this.positionX] = 3;
         } else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "top")){
             playerMoveaudio();
             game.playAudio("sound/Open_00.mp3")
             grid[this.positionY][this.positionX] = 0;
-            this.deplacement++
+            this.movement++
             this.positionY--;
             grid[this.positionY][this.positionX] = 3;
             grid[this.positionY-1][this.positionX] = 2;
@@ -50,13 +50,13 @@ export class Player {
 
     goDown(grid, game) {
         if (game.detectSomethings(this.positionX, this.positionY, grid, "bottom", 0)) {
-            this.deplacement++
+            this.movement++
             grid[this.positionY][this.positionX] = 0;
             this.positionY++;
             grid[this.positionY][this.positionX] = 3;
             playerMoveaudio();
         }else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "bottom")){
-            this.deplacement++
+            this.movement++
             game.playAudio("sound/Open_00.mp3")
             grid[this.positionY][this.positionX] = 0;
             this.positionY++;
@@ -70,13 +70,13 @@ export class Player {
 
     goLeft(grid, game) {
         if (game.detectSomethings(this.positionX, this.positionY, grid, "left", 0)) {
-            this.deplacement++
+            this.movement++
             grid[this.positionY][this.positionX] = 0;
             this.positionX--;
             playerMoveaudio();
             grid[this.positionY][this.positionX] = 3;
         }else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "left")){
-            this.deplacement++
+            this.movement++
             game.playAudio("sound/Open_01.mp3")
             grid[this.positionY][this.positionX] = 0;
             this.positionX--;
@@ -90,7 +90,7 @@ export class Player {
 
     goRight(grid, game) {
         if (game.detectSomethings(this.positionX, this.positionY, grid, "right", 0)) {
-            this.deplacement++
+            this.movement++
             grid[this.positionY][this.positionX] = 0;
             this.positionX++;
             playerMoveaudio();
@@ -98,7 +98,7 @@ export class Player {
         }else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "right")){
             game.playAudio("sound/Open_01.mp3")
             grid[this.positionY][this.positionX] = 0;
-            this.deplacement++
+            this.movement++
             this.positionX++;
             playerMoveaudio();
             grid[this.positionY][this.positionX] = 3;
@@ -108,7 +108,7 @@ export class Player {
     }
 
     resetPos(grid){
-        this.deplacement = 0
+        this.movement = 0
         for (let i = 0; i < grid.length; i++) {
             for (let j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] === 3) {

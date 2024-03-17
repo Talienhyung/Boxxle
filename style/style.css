@@ -175,6 +175,18 @@ background-color: grey;
     background-size: 3vw;
 }
 
+.notMouving {
+    background: url("https://media.tenor.com/NA1o-ptpmfoAAAAi/mario-super-mario-world.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-size: 3vw;
+}
+
+.back {
+    transform: scaleX(-1);
+}
+
 #reset-btn{
       margin-top: -20px;
 }
@@ -343,6 +355,54 @@ background-color: grey;
     text-align: center;
     position: center;
     top: 40%;
-    transform: translateX(60%);
+}
 
+.button-ornement{
+    align-items: center;
+    background-color: initial;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: Eina01,sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 24px;
+    min-height: 64px;
+    outline: none;
+    overflow: visible;
+    padding: 19px 26px;
+    text-align: center;
+    border-style: none;
+    background-image: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+    height: 100%;
+    overflow: hidden;
+    border-radius: 80px;
+    bottom: 4px;
+    left: 4px;
+    overflow: hidden;
+    right: 4px;
+    top: 4px;
+    transition: all 100ms ease-out;
+    padding: 20px 50px 20px 50px;
+}
+
+.button-ornement:hover{
+    background-image: linear-gradient(92.83deg, #f59c69 0, #f93a13 100%);
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 80px;
+    transition-timing-function: ease-in;
+}
+
+.contain{
+    display: flex;
+    text-align: justify;
+    width: 100%;
+    display : flex;
+    text-align: justify-content;
+    flex-direction : row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 }

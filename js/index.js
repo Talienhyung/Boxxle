@@ -8,7 +8,7 @@ let saveBtn = document.querySelector("#save"); // For fetching save button
 let para = document.querySelector("#para"); // For fetching save paragraph
 let user = document.querySelector("#username"); // For fetching save paragraph
 
-
+let miror = false
 //when i will click save button player name will show and input field will disappear
 
 saveBtn.addEventListener("click" , () => {
@@ -22,7 +22,6 @@ saveBtn.addEventListener("click" , () => {
     user.style.display = "none";
   }
   
-
 })
 
 export function  ChangeSettings(key, keyEvent) {
@@ -44,6 +43,7 @@ export function  ChangeSettings(key, keyEvent) {
   }
 }
 
+let copi = 0
 let game = new Game(0);
 let grid = game.gridOrigin
 let player = new Player(grid);
@@ -51,9 +51,16 @@ let settings = new Settings(0);
 
 const container = document.getElementById('gameboard');
 const resetButton = document.getElementById('reset-btnn');
+const depText = document.getElementById('movement');
+const winText = document.getElementById('win');
 
 const draw = () => {
     // Clear previous cells
+    if(player.movement !=0){
+      copi= game.deepClone(player.movement)
+    }
+    depText.textContent = player.movement
+    winText.textContent = "Hooray!!! You've won in "+copi+" moves"
     container.innerHTML = '';
     for (let i = 0; i < grid.length; i++) {
       for (let j = 0; j < grid[i].length; j++) {
@@ -67,6 +74,11 @@ const draw = () => {
             cell.classList.add('onBase')
           }
         } else if (grid[i][j] === 3) {
+          if(player.movement===0){
+            cell.classList.add('notMouving');
+          } else if(miror){
+            cell.classList.add('back');
+          }
           cell.classList.add('player');
         } else if (grid[i][j] === 4) {
           cell.classList.add('target');
@@ -106,9 +118,11 @@ function managementKeys(event) {
             grid = player.goDown(grid, game);
             break;
         case settings.left:
+            miror = true
             grid = player.goLeft(grid, game);
             break;
         case settings.right:
+            miror = false
             grid = player.goRight(grid, game);
             break;
         default:
