@@ -2,7 +2,7 @@
 
 // fetching Audios
 let Music = new Audio("Background.mp3"); // For fetching BackgroundMusic
-let playerMoveMusic = new Audio("Playermove.mp3"); // For fetching BackgroundMusic
+let playerMoveMusic = new Audio("sound/Playermove.mp3"); // For fetching BackgroundMusic
 
 
 const backgroundaudio = () => {
@@ -73,6 +73,7 @@ export class Player {
             this.deplacement++
             grid[this.positionY][this.positionX] = 0;
             this.positionX--;
+            playerMoveaudio();
             grid[this.positionY][this.positionX] = 3;
         }else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "left")){
             this.deplacement++
@@ -92,12 +93,14 @@ export class Player {
             this.deplacement++
             grid[this.positionY][this.positionX] = 0;
             this.positionX++;
+            playerMoveaudio();
             grid[this.positionY][this.positionX] = 3;
         }else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "right")){
             game.playAudio("sound/Open_01.mp3")
             grid[this.positionY][this.positionX] = 0;
             this.deplacement++
             this.positionX++;
+            playerMoveaudio();
             grid[this.positionY][this.positionX] = 3;
             grid[this.positionY][this.positionX+1] = 2;
         }
