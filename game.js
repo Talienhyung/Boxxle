@@ -130,5 +130,11 @@ export class Game {
     
     deepClone(array) {
         return JSON.parse(JSON.stringify(array));
-      }
+    }
+
+    playAudio(url) {
+        var audio = new Audio(url);
+        
+        audio.play();
+    }
 }
