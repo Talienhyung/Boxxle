@@ -32,7 +32,7 @@ let player = new Player(grid);
 let settings = new Settings(0);
 
 const container = document.getElementById('gameboard');
-const resetButton = document.getElementById('reset-btn');
+const resetButton = document.getElementById('reset-btnn');
 
 const draw = () => {
     // Clear previous cells
