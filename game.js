@@ -120,20 +120,6 @@ export class Game {
         }
         return true
     }
-
-    nextLevel(){
-        this.actualLevel++
-        if (this.actualLevel === Levels.length){
-            this.endLevel = true
-            return
-        }
-        this.gridOrigin = Levels[this.actualLevel]
-        this.listBase = this.findBase()
-        this.cloneGrid = this.deepClone(Levels[this.actualLevel])
-        if(this.listBase.length===0){
-            this.nextLevel()
-        }
-    }
     
     deepClone(array) {
         return JSON.parse(JSON.stringify(array));
@@ -143,5 +129,38 @@ export class Game {
         var audio = new Audio(url);
         
         audio.play();
+    }
+
+    win(){
+        let winContainer = document.querySelector("#winContainer"); // To show Username
+
+        let winMsg = document.querySelector("#win"); // To show Username
+
+        winMsg.innerText = "Hurrah!!! You Have won";
+        winContainer.style.display = "block";
+        winMsg.style.display = "block";
+        winMsg.style.width = 600 + "px";
+        setTimeout(() =>{
+            winContainer.style.display = "none";
+            winMsg.style.display = "none";
+            winMsg.style.width = 0 + "px";
+            winMsg.style.height = 0 + "px";
+        }, 5000);
+   }
+   
+    nextLevel(){
+        this.actualLevel++
+        if (this.actualLevel === Levels.length){
+            this.endLevel = true
+            return
+        }
+        this.gridOrigin = Levels[this.actualLevel]
+        this.win()
+        this.listBase = this.findBase()
+        this.cloneGrid = this.deepClone(Levels[this.actualLevel])
+        if(this.listBase.length===0){
+            this.nextLevel()
+            this.errorBase = true
+        }
     }
 }

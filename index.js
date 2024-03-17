@@ -1,6 +1,29 @@
 import { Game } from "./game.js";
 import { Player } from "./player.js";
 import { Settings } from "./settings.js";
+let userName = document.querySelector("#userInput"); // For fetching username
+let showUserName = document.querySelector("#showUsername"); // To show Username
+let saveBtn = document.querySelector("#save"); // For fetching save button
+let para = document.querySelector("#para"); // For fetching save paragraph
+let user = document.querySelector("#username"); // For fetching save paragraph
+
+
+//when i will click save button player name will show and input field will disappear
+
+saveBtn.addEventListener("click" , () => {
+  if(userName.value == ""){
+    error.innerText = "Please enter your name";
+    para.style.display = "block";
+  
+  }else{
+    showUserName.innerText = userName.value;
+  para.style.display = "block";
+  user.style.display = "none";
+  }
+  
+
+})
+
 
 let game = new Game(0);
 let grid = game.gridOrigin

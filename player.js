@@ -1,4 +1,24 @@
+  //fetching Audios
+
+// fetching Audios
+let Music = new Audio("Background.mp3"); // For fetching BackgroundMusic
+let playerMoveMusic = new Audio("playermove.mp3"); // For fetching BackgroundMusic
+
+
+const backgroundaudio = () => {
+ Music.play();
+}
+
+const playerMoveaudio = () => {
+ playerMoveMusic.play();
+}
+
+
+
 export class Player {
+  
+
+
     positionX = 1;
     positionY = 1;
 
@@ -9,12 +29,15 @@ export class Player {
     }
     
     goUp(grid, game) {
+        backgroundaudio();
         if (game.detectSomethings(this.positionX, this.positionY, grid, "top", 0)) {
-        grid[this.positionY][this.positionX] = 0;
-        this.positionY--;
-        this.deplacement++
-        grid[this.positionY][this.positionX] = 3;
+            playerMoveaudio();
+            grid[this.positionY][this.positionX] = 0;
+            this.positionY--;
+            this.deplacement++
+            grid[this.positionY][this.positionX] = 3;
         } else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "top")){
+            playerMoveaudio();
             game.playAudio("sound/Open_00.mp3")
             grid[this.positionY][this.positionX] = 0;
             this.deplacement++
@@ -31,6 +54,7 @@ export class Player {
             grid[this.positionY][this.positionX] = 0;
             this.positionY++;
             grid[this.positionY][this.positionX] = 3;
+            playerMoveaudio();
         }else if (game.detectBoxPushable(this.positionX, this.positionY, grid, "bottom")){
             this.deplacement++
             game.playAudio("sound/Open_00.mp3")
@@ -38,6 +62,8 @@ export class Player {
             this.positionY++;
             grid[this.positionY][this.positionX] = 3;
             grid[this.positionY+1][this.positionX] = 2;
+            playerMoveaudio();
+
         }
         return game.baseOnBox(grid)
     }
@@ -55,6 +81,8 @@ export class Player {
             this.positionX--;
             grid[this.positionY][this.positionX] = 3;
             grid[this.positionY][this.positionX-1] = 2;
+            playerMoveaudio();
+
         }
         return game.baseOnBox(grid)
     }

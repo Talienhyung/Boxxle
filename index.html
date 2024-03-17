@@ -5,15 +5,42 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./style.css">
     <title>Boxxle.io</title>
+    
 
 </head>
 
-<body>
-    <div id="gameboard">
+<body onload="onload()">
+     <!-- the container where we show usernam and error -->
+    <div class="username" id="username">
+        <div class="border1">
+            <div class="border">
+                <input onkeydown=" backgroundaudio()"  required id="userInput" type="text"  placeholder="Write your Name Here ">
+                <span id="error"></span>
+    
+                <button class="save-btn reset-btn " id="save"> START</button>
+    
+            </div>
+        </div>
     </div>
-    <a href="setting.html">truc</a>
-    <button id="reset-btn">Reset</button>
+    <!-- The win Show Container -->
+    <div id="winContainer">
+        <p id="win">Hurrah!!! You Have won</p>
+
+    </div>
+    <!-- the paragragh where we show Player name -->
+    <p id="para"> Player's Name : <span id="showUsername"> </span></p>
+    
+    <!-- The Ganeboard -->
+    <div id="gameboard">
+       
+    <!-- The reset btn -->
+    </div> 
+    <button class="reset-btn" id="reset-btn" >Reset</button>
+    <script src="main.js"></script>
+    
+   
     <script type= "module" src="./index.js"></script>
+    
 </body>
 
 </html>
